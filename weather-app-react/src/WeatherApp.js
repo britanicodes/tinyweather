@@ -7,7 +7,7 @@ const WeatherApp = () => {
     const [weatherData, setWeatherData] = useState(null);
 
     const fetchWeatherData = async () => {
-        const response = await fetch(`http://localhost:5001/weather?city=${city}`);
+        const response = await fetch(`http://ec2-3-89-158-143.compute-1.amazonaws.com:5001/weather?city=${city}`);
         const data = await response.json();
         setWeatherData(data);
     };

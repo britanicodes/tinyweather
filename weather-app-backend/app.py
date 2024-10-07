@@ -1,13 +1,21 @@
-from flask import Flask, jsonify, request
-import requests
-from flask_cors import CORS
+from flask import Flask, jsonify, request # type: ignore
+import requests # type: ignore
+from flask_cors import CORS # type: ignore
 
 app = Flask(__name__)
 CORS(app)
 
+@app.route('/')
+def home():
+    return jsonify(message="Welcome to my Flask app!")
+
+@app.route('/hello')
+def hello():
+    return jsonify(message="HELLOOOOO!")
+
 @app.route('/weather', methods=['GET'])
 def get_weather():
-    api_key = '4eb72ab8a81eb83af1a742aad2d21b22'  # Replace with your OpenWeatherMap API key
+    api_key = process.env.REACT_APP_API_KEY;
     city = request.args.get('city')
     if not city:
         print("No city parameter provided")  # Add this line
